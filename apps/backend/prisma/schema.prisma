@@ -3,11 +3,48 @@
 
 // Get a free hosted Postgres database in seconds: `npx create-db`
 
-generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
-}
-
 datasource db {
   provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum TaskStatus {
+  BACKLOG
+  IN_PROGRESS
+  BLOCKED
+  DONE
+}
+
+model User {
+  id    String @id @default(uuid())
+  name  String
+  role  String // Cargo
+  tasks Task[]
+}
+
+model Sprint {
+  id          String   @id @default(uuid())
+  description String
+  startDate   DateTime 
+  endDate     DateTime 
+  tasks       Task[]   
+}
+
+model Task {
+  id          String     @id @default(uuid())
+  description String
+  status      TaskStatus @default(BACKLOG) 
+  dueDate     DateTime?  
+  
+  createdAt   DateTime   @default(now())
+  completedAt DateTime? 
+
+  userId      String?
+  user        User?      @relation(fields: [userId], references: [id], onDelete: SetNull)
+  
+  sprintId    String?
+  sprint      Sprint?    @relation(fields: [sprintId], references: [id], onDelete: SetNull)
 }
