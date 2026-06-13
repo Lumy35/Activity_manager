@@ -1,34 +1,50 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  HttpCode,
+  HttpStatus,
+  Query,
+} from '@nestjs/common';
 import { TasksService } from './tasks.service';
-import { CreateTaskDto } from './dto/create-task.dto';
-import { UpdateTaskDto } from './dto/update-task.dto';
+import { CreateTasksBodyDTO } from './dto/CreateTasksBodyDTO';
+import { UpdateTasksBodyDTO } from './dto/UpdateTasksBodyDTO';
 
 @Controller('tasks')
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
 
   @Post()
-  create(@Body() createTaskDto: CreateTaskDto) {
-    return this.tasksService.create(createTaskDto);
+  @HttpCode(HttpStatus.CREATED)
+  create(@Body() createTasksBodyDTO: CreateTasksBodyDTO) {
+    return this.tasksService.create(createTasksBodyDTO);
   }
 
   @Get()
-  findAll() {
-    return this.tasksService.findAll();
+  findMany(@Query('sprintId') sprintId?: string) {
+    return this.tasksService.findMany(sprintId);
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.tasksService.findOne(+id);
+    return this.tasksService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto) {
-    return this.tasksService.update(+id, updateTaskDto);
+  update(
+    @Param('id') id: string,
+    @Body() updateTasksBodyDTO: UpdateTasksBodyDTO,
+  ) {
+    return this.tasksService.update(id, updateTasksBodyDTO);
   }
 
   @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id') id: string) {
-    return this.tasksService.remove(+id);
+    return this.tasksService.remove(id);
   }
 }
