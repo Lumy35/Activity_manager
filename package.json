@@ -1,18 +1,20 @@
 {
   "name": "Activity_manager",
   "version": "1.0.0",
+  "private": true,
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:seed": "pnpm --filter backend db:seed",
+    "backend:dev": "pnpm --filter backend run start:dev",
+    "frontend:dev": "pnpm --filter frontend run dev"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.33.0",
   "devDependencies": {
-		"@types/node": "^25.9.3",
-		"dotenv": "^17.4.2",
-		"prisma": "^7.8.0"
-	}
+    "@types/node": "^25.9.3",
+    "dotenv": "^17.4.2"
+  }
 }

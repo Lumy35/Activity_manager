@@ -1,9 +1,9 @@
 import { useState } from "react";
-import KanbanPage from "./modules/kanban/kanbanPage";
-import DashboardPage from "./modules/dashboard/dashboardPage";
 import { HiTemplate } from "react-icons/hi";
 import { FaChartPie } from "react-icons/fa";
 import "./App.css";
+import KanbanPage from "./modules/kanban/KanbanPage";
+import DashboardPage from "./modules/dashboard/DashboardPage";
 
 export function App() {
   const [currentView, setCurrentView] = useState<"kanban" | "dashboard">(
