@@ -1,0 +1,93 @@
+.kanban-column {
+  background-color: var(
+    --bg-secondary
+  );
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  flex: 1;
+  min-width: 280px;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
+}
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 2px solid transparent;
+}
+
+.header-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.column-header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.column-count {
+  background-color: var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+}
+
+.column-header.header-backlog {
+  border-bottom-color: var(--color-backlog);
+}
+.icon-backlog {
+  color: var(--color-backlog);
+}
+
+.column-header.header-in_progress {
+  border-bottom-color: var(--color-in-progress);
+}
+.icon-progress {
+  color: var(--color-in-progress);
+}
+
+.column-header.header-blocked {
+  border-bottom-color: var(--color-blocked);
+}
+.icon-blocked {
+  color: var(--color-blocked);
+}
+
+.column-header.header-done {
+  border-bottom-color: var(--color-done);
+}
+.icon-done {
+  color: var(--color-done);
+}
+
+.column-body {
+  padding: 0.75rem;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.column-body::-webkit-scrollbar {
+  width: 5px;
+}
+.column-body::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 4px;
+}
+
+.column-empty {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  padding: 2rem 0;
+  border: 1px dashed var(--border-color);
+  border-radius: 6px;
+}
