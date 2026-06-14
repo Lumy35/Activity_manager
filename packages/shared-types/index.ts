@@ -1,12 +1,5 @@
 export type TaskStatus = "BACKLOG" | "IN_PROGRESS" | "BLOCKED" | "DONE";
 
-export const TASK_STATUS_LABELS: Record<TaskStatus, string> = {
-  BACKLOG: "Backlog",
-  IN_PROGRESS: "Em Progresso",
-  BLOCKED: "Impedido",
-  DONE: "Concluído",
-};
-
 export interface User {
   id: string;
   name: string;
