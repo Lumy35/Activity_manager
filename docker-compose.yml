@@ -10,7 +10,7 @@ services:
 
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: sua_senha_aqui
+      POSTGRES_PASSWORD: root
       POSTGRES_DB: activity_manager
 
     ports:
@@ -42,7 +42,7 @@ services:
     environment:
       PORT: 3000
 
-      DATABASE_URL: postgresql://postgres:sua_senha_aqui@database:5432/activity_manager?schema=public
+      DATABASE_URL: postgresql://postgres:root@database:5432/activity_manager?schema=public
 
     ports:
       - "3000:3000"
