@@ -225,6 +225,15 @@ cd Activity_manager
 
 ---
 
+## Variáveis de ambiente
+
+Antes de executar o projeto, crie o arquivo `.env` baseado no exemplo:
+
+Backend:
+
+```bash
+cp apps/backend/.env.example apps/backend/.env
+
 ## Executar aplicação
 
 Na raiz do projeto:
